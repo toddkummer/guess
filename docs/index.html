@@ -7,49 +7,13 @@
   <!-- served from /docs -->
   <script type="module" src="main.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-
-  <style>
-    html {
-      font-family: sans-serif;
-    }
-
-    body {
-      width: 50%;
-      max-width: 800px;
-      min-width: 480px;
-      margin: 0 auto;
-    }
-    
-    .dinoMite {
-      background-image: url("images/dinosaur-background-20851282041923qTUN.jpg");
-      margin-top: -40px;
-      height: 480px; /* You must set a specified height */
-      background-position: center; /* Center the image */
-      background-repeat: no-repeat; /* Do not repeat the image */
-      background-size: cover; /* Resize the background image to cover the entire container */
-    }
-
-    .instructions {
-      margin-right: 50%;
-      margin-top: -20px;
-      margin-bottom: 10px;
-    }
-
-    .lastResult {
-      color: white;
-      padding: 3px;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/board.css">
 </head>
 
 <body class="dinoMite">
 <section class="section">
   <div class="container">
-    <h1 class="title">Number guessing game</h1>
+    <h1 class="title">Number Guessing Game</h1>
 
     <p class="instructions"></p>
 
@@ -79,7 +43,6 @@
         <p></p>
       </div>
       <div class="message-body">
-
       </div>
     </article>
   </div>
