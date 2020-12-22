@@ -2,6 +2,7 @@ import { MessageBoxController } from './message_box_controller.js'
 import { ProgressBar } from './progress_bar.js'
 import { Game } from './game.js'
 
+/* global Stimulus */
 class BoardController extends Stimulus.Controller {
   static get targets () {
     return ['instructions', 'guess', 'submit', 'previousGuesses', 'progressBar', 'reset']
