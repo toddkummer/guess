@@ -1,3 +1,5 @@
+/* global Stimulus */
+/* eslint-disable accessor-pairs */
 export class MessageBoxController extends Stimulus.Controller {
   static get targets () {
     return ['header', 'body']
