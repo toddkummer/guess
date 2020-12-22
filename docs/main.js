@@ -1,4 +1,5 @@
-import {BoardController} from "./modules/board_controller.js"
+import { BoardController } from './modules/board_controller.js'
 
-const application = Stimulus.Application.start();
-application.register("board", BoardController)
+/* global Stimulus */
+const application = Stimulus.Application.start()
+application.register('board', BoardController)
