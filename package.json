@@ -8,5 +8,8 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-promise": "^4.2.1",
     "prettier": "^2.2.1"
+  },
+  "scripts": {
+    "lint": "eslint docs"
   }
 }
