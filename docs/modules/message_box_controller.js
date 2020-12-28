@@ -7,7 +7,7 @@ export class MessageBoxController extends Stimulus.Controller {
 
   connect () {
     console.log('message box connect')
-    this.element.dispatchEvent(new CustomEvent('connect', { detail: { controller: this } }))
+    this.element.dispatchEvent(new CustomEvent('connect', { detail: { name: 'messageBox', controller: this } }))
   }
 
   set header (value) {
