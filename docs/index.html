@@ -8,6 +8,7 @@
   <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
   <script type="module" src="main.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <script defer src='https://use.fontawesome.com/releases/v5.14.0/js/all.js'></script>
   <link rel="stylesheet" href="styles/board.css">
 </head>
 
@@ -37,6 +38,45 @@
       <div class="message-header" data-message-box-target="header"></div>
       <div class="message-body"data-message-box-target="body"></div>
     </article>
+
+    <div data-controller="options" data-action="connect->board#addChild">
+      <button class="button is-link is-inverted is-small" data-action="options#open">
+      <span class="icon">
+        <i class="fas fa-utensils"></i>
+      </span>
+        <span>Feed Me</span>
+      </button>
+
+      <div class="modal" data-options-target="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card" data-action="keydown->options#captureEscapeAndEnter">
+
+          <section class="modal-card-body">
+            <div class="content">
+              Hungry dinosaurs make you guess from a wider range of numbers and give you fewer guesses. How hungry is your dinosaur?
+            </div>
+
+            <div class="field">
+              <label class="label">Maximum Number</label>
+              <div class="control">
+                <input class="input" type="text" data-options-target="maximumNumber">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Number of Guesses</label>
+              <div class="control">
+                <input class="input" type="text" data-options-target="numberOfGuesses">
+              </div>
+            </div>
+          </section>
+
+          <footer class="modal-card-foot buttons is-right">
+            <button class="button" data-action="options#close">Cancel</button>
+            <button class="button is-success"data-action="options#save">Save</button>
+          </footer>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 </body>

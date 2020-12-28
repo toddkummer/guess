@@ -1,6 +1,7 @@
 import { MessageBoxController } from './message_box_controller.js'
 import { ProgressBar } from './progress_bar.js'
 import { Game } from './game.js'
+import { OptionsController } from './options_controller.js'
 
 /* global Stimulus */
 class BoardController extends Stimulus.Controller {
@@ -15,17 +16,39 @@ class BoardController extends Stimulus.Controller {
     }
   }
 
+  get maximumNumber () {
+    return parseInt(this.storage.getItem('maximumNumber') || this.maxValue)
+  }
+
+  set maximumNumber (value) {
+    this.storage.setItem('maximumNumber', value)
+  }
+
+  get numberOfGuesses () {
+    return parseInt(this.storage.getItem('numberOfGuesses') || this.guessesValue)
+  }
+
+  set numberOfGuesses (value) {
+    this.storage.setItem('numberOfGuesses', value)
+  }
+
   connect () {
-    this.instructionsTarget.textContent = `We have selected a random number between 1 and ${this.maxValue}. Guess it in ${this.guessesValue} turns or fewer to escape the T-Rex.`
     this.application.register('message-box', MessageBoxController)
-    this.progressBar = new ProgressBar(this.progressBarTarget, this.guessesValue)
-    this.game = new Game(this.guessesValue, this.maxValue)
+    this.application.register('options', OptionsController)
+    this.prepareBoard()
     this.start()
+  }
+
+  prepareBoard () {
+    this.instructionsTarget.textContent = `We have selected a random number between 1 and ${this.maximumNumber}. Guess it in ${this.numberOfGuesses} turns or fewer to escape the T-Rex.`
+    this.progressBar = new ProgressBar(this.progressBarTarget, this.numberOfGuesses)
+    this.game = new Game(this.numberOfGuesses, this.maximumNumber)
   }
 
   addChild (customEvent) {
     const { name, controller } = customEvent.detail
     this[name] = controller
+    controller.parent = this
   }
 
   start () {
@@ -61,6 +84,18 @@ class BoardController extends Stimulus.Controller {
     this.toggleControls()
     this.messageBox.reset()
     this.start()
+  }
+
+  resetWithNewOptions () {
+    this.prepareBoard()
+    this.reset()
+    if (this.guessTarget.classList.contains('is-hidden')) {
+      this.toggleControls()
+    }
+  }
+
+  get storage () {
+    return window.localStorage
   }
 
   get userGuess () {
