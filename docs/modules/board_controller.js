@@ -23,8 +23,9 @@ class BoardController extends Stimulus.Controller {
     this.start()
   }
 
-  addMessageBox (customEvent) {
-    this.messageBox = customEvent.detail.controller
+  addChild (customEvent) {
+    const { name, controller } = customEvent.detail
+    this[name] = controller
   }
 
   start () {
